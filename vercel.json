@@ -1,0 +1,25 @@
+{
+	"$schema": "https://openapi.vercel.sh/vercel.json",
+	"version": 2,
+	"cleanUrls": true,
+	"public": true,
+	"regions": ["cdg1"],
+	"builds": [
+		{
+			"src": "dist/index.js", 
+			"config": { "includeFiles": ["dist/**"] },
+			"use": "@vercel/node"
+		},
+		{
+			"src": "dist/index-worker.js", 
+			"config": { "includeFiles": ["dist/**"] },
+			"use": "@vercel/node"
+		}
+	],
+	"routes": [
+		{
+			"src": "/(.*)",
+			"dest": "src/index.ts"
+		}
+	]
+}
